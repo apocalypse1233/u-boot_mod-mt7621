@@ -953,7 +953,6 @@ void LANWANPartition(void)
 	//mii_mgr_write(31, 0x2514, 0x10001);//port5
 	//mii_mgr_write(31, 0x2614, 0x10001);//port6
 
-	/*port6 */
 	//VLAN member
 	IsSwitchVlanTableBusy();
 	mii_mgr_write(31, 0x94, 0x407e0001);//VAWD1
