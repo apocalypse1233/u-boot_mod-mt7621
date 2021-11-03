@@ -1546,7 +1546,8 @@ bool "USB Recovery" USB_RECOVERY_SUPPORT
 bool "Partition LAN/WAN" LAN_WAN_PARTITION
 if [ "$LAN_WAN_PARTITION" = "y" ]; then
 choice 'LAN/WAN Board Layout' "W/LLLL RALINK_DEMO_BOARD_PVLAN \
-		                LLLL/W RALINK_EV_BOARD_PVLAN
+		                LLLL/W RALINK_EV_BOARD_PVLAN \
+		                LXXXX UBNT_PORT_ISOLATION
 			       "
 fi
 bool "Enable all Ethernet PHY" EPHY_LINK_UP
