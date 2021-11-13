@@ -1691,7 +1691,7 @@ void rt_gsw_init(void)
 
 	/*Init MT7530, we use MT7530 as default external switch*/
 	mii_mgr_write(31, 0x7000, 0x3);//reset MT7530
-	printf("\nreset MT7530\n");
+	printf("#Reset_MT7530\n");
 	udelay(100);
 
 #if 0
@@ -2202,7 +2202,7 @@ void setup_internal_gsw(void)
 	RALINK_REG(0xbe000060) &= ~(1 << 14); //set RGMII1 to Normal mode
 
 	// reset phy
-	printf("\n Reset MT7530\n");
+	printf("#Reset_MT7530\n");
 	regValue = RALINK_REG(RT2880_RSTCTRL_REG);
 	regValue |= (1U<<2);
 	RALINK_REG(RT2880_RSTCTRL_REG) = regValue;
