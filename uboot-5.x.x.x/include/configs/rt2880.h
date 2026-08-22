@@ -103,6 +103,8 @@ extern unsigned int  CFG_BLOCKSIZE;
 #define CONFIG_SERVERIP 192.168.1.2
 #define CONFIG_IPADDR 192.168.1.1
 #define CONFIG_ETHADDR "00:0C:43:30:52:11"
+/* Allow to overwrite serial, ethaddr, etc */
+#define CONFIG_ENV_OVERWRITE
 /* valid baudrates */
 #define CFG_BAUDRATE_TABLE	{ 9600, 19200, 38400, 57600, 115200 }
 
