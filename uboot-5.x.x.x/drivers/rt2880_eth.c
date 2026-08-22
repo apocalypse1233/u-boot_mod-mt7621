@@ -942,7 +942,7 @@ void LANWANPartition(void)
 	mii_mgr_write(31, 0x2304, 0xff0003);//port3
 	mii_mgr_write(31, 0x2404, 0xff0003);//port4
 	//mii_mgr_write(31, 0x2504, 0xff0003);//port5
-	//mii_mgr_write(31, 0x2604, 0xff0003);//port5
+	//mii_mgr_write(31, 0x2604, 0xff0003);//port6
 
 	//set PVID
 	mii_mgr_write(31, 0x2014, 0x10002);//port0
