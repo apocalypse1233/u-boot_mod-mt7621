@@ -105,8 +105,9 @@ choice 'Ram/Rom version' "RAM UBOOT_RAM \
 bool "Partition LAN/WAN" LAN_WAN_PARTITION
 if [ "$LAN_WAN_PARTITION" = "y" ]; then
  choice 'LAN/WAN Board Layout' "W/LLLL RALINK_DEMO_BOARD_PVLAN \
-		                LLLL/W RALINK_EV_BOARD_PVLAN 
-			       " W/LLLL
+		                LLLL/W RALINK_EV_BOARD_PVLAN \
+		                ER-X UBNT_PORT_ISOLATION
+			       "
 fi
 
 if [ "$UBOOT_RAM" = "y" ]; then
