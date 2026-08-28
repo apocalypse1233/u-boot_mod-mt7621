@@ -1025,9 +1025,9 @@ void LANWANPartition(void)
 #endif
 
 #if defined(EPHY_LINK_UP)
-	// turn on GSW PHY + restart AN
-	for(i=0;i<=4;i++)
-		mii_mgr_write(i, 0x0, 0x1340);
+    /* All PHY link up after LAN/WAN partition */
+    for(i=0;i<=4;i++)
+        mii_mgr_write(i, 0x0, 0x1340);
 #endif
 #endif
 }
@@ -1695,7 +1695,6 @@ void rt_gsw_init(void)
 	printf("\nreset MT7530\n");
 	udelay(100);
 
-#if 0
 	for(i=0;i<=4;i++) 
 	{
 	       //turn on PHY
@@ -1703,8 +1702,6 @@ void rt_gsw_init(void)
 	       regValue &= ~(0x1<<11);
 	       mii_mgr_write(i, 0x0, regValue);
 	}
-#endif
-
 	mii_mgr_write(31, 0x3600, 0x5e33b);//MT7530 P6 force 1G
 	mii_mgr_write(31, 0x7804, 0x1117ccf);//MT7530 P5 disable
 
@@ -2203,7 +2200,7 @@ void setup_internal_gsw(void)
 	RALINK_REG(0xbe000060) &= ~(1 << 14); //set RGMII1 to Normal mode
 
 	// reset phy
-	printf("\n Reset MT7530\n");
+
 	regValue = RALINK_REG(RT2880_RSTCTRL_REG);
 	regValue |= (1U<<2);
 	RALINK_REG(RT2880_RSTCTRL_REG) = regValue;
@@ -2229,6 +2226,7 @@ void setup_internal_gsw(void)
 	mii_mgr_write(31, 0x3600, 0x8000);//force MAC link down before reset
 
 	mii_mgr_write(31, 0x7000, 0x3);//reset MT7530
+	printf("\n Reset MT7530\n");
 	udelay(100);
 
 #if defined (MT7621_USE_GE1)
@@ -2334,6 +2332,16 @@ void setup_internal_gsw(void)
 	    mii_mgr_write(i, 13, 0x4007);
 	    mii_mgr_write(i, 14, 0x0);
 	}
+	
+	/*Enable PHY*/
+	#if defined(EPHY_LINK_UP) && !defined(LAN_WAN_PARTITION)
+            /* All PHY link up */
+            for (i = 0; i <= 4; i++)
+                mii_mgr_write(i, 0x0, 0x1340);
+        #elif !defined(EPHY_LINK_UP)
+            /* Only PHY port 0 link up */
+            mii_mgr_write(0, 0x0, 0x1340);
+        #endif
 
 #ifdef MT7621_USE_GE2
 #if defined (GE_RGMII_INTERNAL_P0_AN) || defined (GE_RGMII_INTERNAL_P4_AN)
@@ -2542,49 +2550,6 @@ static int rt2880_eth_setup(struct eth_device* dev)
 	mii_mgr_write(29, 22, 0x8420);
 #endif
 #endif // MAC_TO_GIGAPHY_MODE //
-
-
-#if !defined (EPHY_LINK_UP)
-	// turn on PHY + restart AN
-
-#if defined (MT7620_ASIC_BOARD)
-#if defined (P5_RGMII_TO_MAC_MODE)
-	// MT7530
-	for(i=0;i<=4;i++)
-		mii_mgr_write(i, 0x0, 0x1340);
-#elif !defined (MAC_TO_RTL8367_MODE)
-	// ESW
-#if defined (P4_MAC_TO_NONE_MODE)
-	for(i=0;i<=4;i++)
-#else
-	for(i=0;i<=3;i++)
-#endif
-		mii_mgr_write(i, 0x0, 0x3300);
-#endif
-#endif
-
-#if defined (MT7621_ASIC_BOARD)
-#if defined (MAC_TO_MT7530_MODE)
-	// MT7530
-	for(i=0;i<=4;i++)
-		mii_mgr_write(i, 0x0, 0x1340);
-#endif
-#endif
-
-#if defined (RT3052_ASIC_BOARD) || defined (RT3052_FPGA_BOARD) || \
-    defined (RT3352_ASIC_BOARD) || defined (RT3352_FPGA_BOARD) || \
-    defined (RT5350_ASIC_BOARD) || defined (RT5350_FPGA_BOARD) || \
-    defined (MT7628_ASIC_BOARD) || defined (MT7628_FPGA_BOARD)
-
-#if defined (ETH_ONE_PORT_ONLY)
-	mii_mgr_write(0, 0x0, 0x3300);
-#else
-	for(i=0;i<=4;i++)
-		mii_mgr_write(i, 0x0, 0x3300);
-#endif
-#endif
-
-#endif /* !EPHY_LINK_UP */
 
 #if defined (RT3883_USE_GE2) || defined (MT7621_USE_GE2)
 	wTmp = (u16)dev->enetaddr[0];
