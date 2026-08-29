@@ -101,6 +101,7 @@ extern unsigned int  CFG_BLOCKSIZE;
 #define CONFIG_BOOTDELAY	5	/* autoboot after 5 seconds	*/
 
 #define CONFIG_SERVERIP 192.168.1.2
+#define CONFIG_NETMASK 255.255.255.0
 #define CONFIG_IPADDR 192.168.1.1
 #define CONFIG_ETHADDR "00:AA:BB:CC:DD:10"
 /* Allow to overwrite serial, ethaddr, etc */
