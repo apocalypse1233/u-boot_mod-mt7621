@@ -101,7 +101,7 @@ extern int do_reset(cmd_tbl_t *cmdtp, int flag, int argc, char *argv[]);
 
 #if (CONFIG_COMMANDS & CFG_CMD_NET)
 
-#define ARP_TIMEOUT		4UL		/* Seconds before trying ARP again */
+#define ARP_TIMEOUT		4		/* Seconds before trying ARP again */
 #ifndef	CONFIG_NET_RETRY_COUNT
 # define ARP_TIMEOUT_COUNT	6		/* # of timeouts before giving up  */
 #else
