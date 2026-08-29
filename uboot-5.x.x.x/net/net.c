@@ -1177,9 +1177,7 @@ static void CDPStart(void)
 #endif	/* CFG_CMD_CDP */
 
 
-void
-NetReceive(volatile uchar * inpkt, int len)
-{
+void NetReceive(volatile uchar * inpkt, int len){
 	Ethernet_t *et;
 	IP_t	*ip;
 	ARP_t	*arp;
