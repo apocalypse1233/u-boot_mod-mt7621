@@ -98,7 +98,10 @@ static void check_for_4b(u32 address)
 #if defined (MT7621_ASIC_BOARD) || defined (MT7621_FPGA_BOARD)
 #define COMMAND_MODE		// define this for SPI flash command/user mode support
 #if defined (SPI_FLASH_READ_FAST)
-#define RD_MODE_FAST	// use Fast Read instead of normal Read
+#define RD_MODE_FAST	        // use Fast Read instead of normal Read
+#endif
+#if defined (SPI_FLASH_READ_DOR)
+#define RD_MODE_DOR		// use DOR (0x3B) instead of normal Read
 #endif
 #if defined (SPI_FLASH_READ_QOR)
 #define RD_MODE_QOR		// use QOR (0x6B) instead of normal Read
