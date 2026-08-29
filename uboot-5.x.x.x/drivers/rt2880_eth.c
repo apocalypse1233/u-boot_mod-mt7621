@@ -987,12 +987,10 @@ void LANWANPartition(void)
 
 	//VLAN member
 	IsSwitchVlanTableBusy();
-	//mii_mgr_write(31, 0x94, 0x407e0001);//VAWD1
 	mii_mgr_write(31, 0x94, 0x404f0001);//VAWD1
 	mii_mgr_write(31, 0x90, 0x80001001);//VTCR, VID=1
 	IsSwitchVlanTableBusy();
 
-  //mii_mgr_write(31, 0x94, 0x40610001);//VAWD1
 	mii_mgr_write(31, 0x94, 0x40500001);//VAWD1
 	mii_mgr_write(31, 0x90, 0x80001002);//VTCR, VID=2
 	IsSwitchVlanTableBusy();
