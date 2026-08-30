@@ -956,11 +956,11 @@ void LANWANPartition(void)
 	/*port6 */
 	//VLAN member
 	IsSwitchVlanTableBusy();
-	mii_mgr_write(31, 0x94, 0x407e0001);//VAWD1
+	mii_mgr_write(31, 0x94, 0x405e0001);//VAWD1
 	mii_mgr_write(31, 0x90, 0x80001001);//VTCR, VID=1
 	IsSwitchVlanTableBusy();
 
-	mii_mgr_write(31, 0x94, 0x40610001);//VAWD1
+	mii_mgr_write(31, 0x94, 0x40410001);//VAWD1
 	mii_mgr_write(31, 0x90, 0x80001002);//VTCR, VID=2
 	IsSwitchVlanTableBusy();
 #endif
@@ -973,8 +973,8 @@ void LANWANPartition(void)
 	mii_mgr_write(31, 0x2204, 0xff0003);//port2
 	mii_mgr_write(31, 0x2304, 0xff0003);//port3
 	mii_mgr_write(31, 0x2404, 0xff0003);//port4
-	mii_mgr_write(31, 0x2504, 0xff0003);//port5
-	mii_mgr_write(31, 0x2604, 0xff0003);//port6
+	//mii_mgr_write(31, 0x2504, 0xff0003);//port5
+	//mii_mgr_write(31, 0x2604, 0xff0003);//port6
 
 	//set PVID
 	mii_mgr_write(31, 0x2014, 0x10001);//port0
@@ -982,9 +982,10 @@ void LANWANPartition(void)
 	mii_mgr_write(31, 0x2214, 0x10001);//port2
 	mii_mgr_write(31, 0x2314, 0x10001);//port3
 	mii_mgr_write(31, 0x2414, 0x10002);//port4
-	mii_mgr_write(31, 0x2514, 0x10001);//port5
-	mii_mgr_write(31, 0x2614, 0x10001);//port6
+	//mii_mgr_write(31, 0x2514, 0x10001);//port5
+	//mii_mgr_write(31, 0x2614, 0x10001);//port6
 
+        /*port6 */
 	//VLAN member
 	IsSwitchVlanTableBusy();
 	mii_mgr_write(31, 0x94, 0x404f0001);//VAWD1
@@ -1003,8 +1004,8 @@ void LANWANPartition(void)
 	mii_mgr_write(31, 0x2204, 0xff0003);//port2
 	mii_mgr_write(31, 0x2304, 0xff0003);//port3
 	mii_mgr_write(31, 0x2404, 0xff0003);//port4
-	mii_mgr_write(31, 0x2504, 0xff0003);//port5
-	mii_mgr_write(31, 0x2604, 0xff0003);//port6
+	//mii_mgr_write(31, 0x2504, 0xff0003);//port5
+	//mii_mgr_write(31, 0x2604, 0xff0003);//port6
 
 	//set PVID
 	mii_mgr_write(31, 0x2014, 0x10001);//port0
@@ -1012,9 +1013,10 @@ void LANWANPartition(void)
 	mii_mgr_write(31, 0x2214, 0x10003);//port2
 	mii_mgr_write(31, 0x2314, 0x10004);//port3
 	mii_mgr_write(31, 0x2414, 0x10005);//port4
-	mii_mgr_write(31, 0x2514, 0x10006);//port5
-	mii_mgr_write(31, 0x2614, 0x10001);//port6
+	//mii_mgr_write(31, 0x2514, 0x10006);//port5
+	//mii_mgr_write(31, 0x2614, 0x10001);//port6
 
+        /*port6 */
 	//VLAN member
 	IsSwitchVlanTableBusy();
 	mii_mgr_write(31, 0x94, 0x40410001);//VAWD1
