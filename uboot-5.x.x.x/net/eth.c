@@ -237,7 +237,7 @@ int eth_initialize(bd_t *bis)
 			}
 
 #if defined (MT7621_MP)
-#define GMAC0_OFFSET	0xE000
+#define GMAC0_OFFSET	0x22
 #else
 #define GMAC0_OFFSET	0x22
 #endif
