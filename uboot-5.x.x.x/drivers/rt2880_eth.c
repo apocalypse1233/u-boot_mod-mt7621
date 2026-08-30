@@ -1008,8 +1008,8 @@ void LANWANPartition(void)
 	//mii_mgr_write(31, 0x2604, 0xff0003);//port6
 
 	//set PVID
-	mii_mgr_write(31, 0x2014, 0x10001);//port0
-	mii_mgr_write(31, 0x2114, 0x10002);//port1
+	mii_mgr_write(31, 0x2014, 0x10002);//port0
+	mii_mgr_write(31, 0x2114, 0x10001);//port1
 	mii_mgr_write(31, 0x2214, 0x10003);//port2
 	mii_mgr_write(31, 0x2314, 0x10004);//port3
 	mii_mgr_write(31, 0x2414, 0x10005);//port4
@@ -1019,7 +1019,7 @@ void LANWANPartition(void)
         /*port6 */
 	//VLAN member
 	IsSwitchVlanTableBusy();
-	mii_mgr_write(31, 0x94, 0x40410001);//VAWD1
+	mii_mgr_write(31, 0x94, 0x40420001);//VAWD1
 	mii_mgr_write(31, 0x90, 0x80001001);//VTCR, VID=1
 	IsSwitchVlanTableBusy();
 #endif
@@ -2339,8 +2339,8 @@ void setup_internal_gsw(void)
             for (i = 0; i <= 4; i++)
                 mii_mgr_write(i, 0x0, 0x1340);
         #elif !defined(EPHY_LINK_UP)
-            /* Only PHY port 0 link up */
-            mii_mgr_write(0, 0x0, 0x1340);
+            /* Only PHY port 1 link up */
+            mii_mgr_write(1, 0x0, 0x1340);
         #endif
 
 #ifdef MT7621_USE_GE2
